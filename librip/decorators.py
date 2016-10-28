@@ -35,3 +35,21 @@
 # test_4
 # 1
 # 2
+
+
+def print_result(function):
+    def decor(*args):
+        print(function.__name__)
+        result = function(*args)
+        if type(result) == list:
+            for element in result:
+                print(element)
+        elif type(result) == dict:
+            for key, val in result.items():
+                print('{} = {}'.format(key, val))
+
+        else:
+            print(result)
+
+        return result
+    return decor
